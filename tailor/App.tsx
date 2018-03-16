@@ -4,14 +4,23 @@ import Greeting from './Greeting';
 const FragmentTag = (src: string, primary = false, async = false) => {
     return <div id="app" dangerouslySetInnerHTML={{__html: `<fragment src="${src}" primary="${primary}" async="${async}"/>`}} />
 }
+const FragmentTags = (srcs: String[]) => {
+    const html = srcs.map(src => `<fragment src="${src}"/>`).join('\n');
+    return <div id="app" dangerouslySetInnerHTML={{__html: html}} />
+}
 
-export default class App extends React.Component {
+interface AppProps {
+    fragmentEndpoint: string,
+    categoryFragmentEndpoint: string
+}
+
+export default class App extends React.Component<AppProps, {}> {
     render() {
         return (
             <html>
                 <body>
                     <Greeting name="Gregor" />
-                    {FragmentTag('http://localhost:3000')}
+                    {FragmentTags([this.props.fragmentEndpoint, this.props.categoryFragmentEndpoint])}
                 </body>
             </html>
         );

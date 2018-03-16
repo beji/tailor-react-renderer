@@ -1,18 +1,18 @@
 const nodeExternals = require('webpack-node-externals');
+const path = require('path');
 
 module.exports = [
     {
         entry: {
-            server: './src/server.tsx'
+            server: './tailor/server.tsx'
         },
         output: {
-            path: __dirname + '/dist',
-            filename: '[name].js'
+            path: path.join(__dirname, '../dist'),
+            filename: 'tailor.js'
         },
         resolve: {
             extensions: ['.ts', '.tsx', '.js', '.jsx']
         },
-        devtool: 'source-map',
         // Add the loader for .ts files.
         module: {
             rules: [
