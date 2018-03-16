@@ -41,7 +41,7 @@ const server = http.createServer((req, res) => {
     const endpoint = endpoints[0];
     const targetUrl = endpoint.to + pathname.replace(endpoint.from, '');
 
-    console.log(`Incoming request for ${pathname}, routing to ${endpoint}`);
+    console.log(`Incoming request for ${pathname}, routing to ${targetUrl}`);
     return http.get(targetUrl, (endpointRes) => {
         res.writeHead(200, endpointRes.headers);
         endpointRes.on('data', (chunk) => {
