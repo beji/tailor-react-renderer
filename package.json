@@ -5,7 +5,7 @@
   "scripts": {
     "start": "run-p start:*",
     "start:router": "node dist/router",
-    "start:tailor": "node dist/tailor",    
+    "start:tailor": "node dist/tailor",
     "start:fragment": "run-p start:fragment:*",
     "start:fragment:test": "node fragments/fragment",
     "start:fragment:category": "node dist/fragments/category",
@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "node-tailor": "^3.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -26,10 +27,12 @@
     "@types/react": "^16.0.40",
     "@types/react-dom": "^16.0.4",
     "express": "^4.16.3",
-    "node-tailor": "^3.6.0",
     "nodemon": "^1.17.2",
     "npm-run-all": "^4.1.2",
     "ts-loader": "^4.0.1",
+    "tslint": "^5.9.1",
+    "tslint-loader": "^3.6.0",
+    "tslint-react": "^3.5.1",
     "typescript": "^2.7.2",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",

@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as url from 'url';
 
 import App from './App';
-import { renderToString } from 'react-dom/server';
+import * as ReactDOMServer from 'react-dom/server';
 import { createFactory } from 'react';
 import { Endpoints, getRouterUrl } from '../common/router_utils';
 
@@ -13,25 +13,24 @@ const AppFactory = createFactory(App);
 
 const getPathName = (request: any) => url.parse(request.url, true).pathname;
 
-const home = renderToString(AppFactory({
+const home = ReactDOMServer.renderToString(AppFactory({
     fragmentEndpoint: getRouterUrl(Endpoints.fragments.test),
-    categoryFragmentEndpoint: getRouterUrl(Endpoints.fragments.category)
+    categoryFragmentEndpoint: getRouterUrl(Endpoints.fragments.category),
 }));
 
 const fetchTemplate = (request: any, parseTemplate: any) => {
     const pathName = getPathName(request);
 
     switch (pathName) {
-        case '/': 
+        case '/':
             return parseTemplate(home);
         default:
             return parseTemplate(home);
     }
-}
+};
 
 const tailor = new Tailor({fetchTemplate});
 const server = http.createServer(tailor.requestHandler);
 
-console.log(`Tailor Server started at ${PORT}`)
+console.log(`Tailor Server started at ${PORT}`);
 server.listen(PORT);
-

@@ -1,5 +1,6 @@
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
+const common = require('../common');
 
 module.exports = [
     {
@@ -16,10 +17,8 @@ module.exports = [
         // Add the loader for .ts files.
         module: {
             rules: [
-                {
-                    test: /\.tsx?$/,
-                    loader: 'ts-loader',
-                },
+                common.loaders.tslint,                
+                common.loaders.typescript
             ],
         },
         target: 'node',

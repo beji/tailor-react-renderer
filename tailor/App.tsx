@@ -2,20 +2,21 @@ import * as React from 'react';
 import Greeting from './Greeting';
 
 const FragmentTag = (src: string, primary = false, async = false) => {
-    return <div id="app" dangerouslySetInnerHTML={{__html: `<fragment src="${src}" primary="${primary}" async="${async}"/>`}} />
-}
-const FragmentTags = (srcs: String[]) => {
-    const html = srcs.map(src => `<fragment src="${src}"/>`).join('\n');
-    return <div id="app" dangerouslySetInnerHTML={{__html: html}} />
+    const html = `<fragment src="${src}" primary="${primary}" async="${async}"/>`;
+    return (<div id="app" dangerouslySetInnerHTML={{__html: html}} />);
+};
+const FragmentTags = (srcs: string[]) => {
+    const html = srcs.map((src) => `<fragment src="${src}"/>`).join('\n');
+    return (<div id="app" dangerouslySetInnerHTML={{__html: html}} />);
+};
+
+interface IAppProps {
+    fragmentEndpoint: string;
+    categoryFragmentEndpoint: string;
 }
 
-interface AppProps {
-    fragmentEndpoint: string,
-    categoryFragmentEndpoint: string
-}
-
-export default class App extends React.Component<AppProps, {}> {
-    render() {
+export default class App extends React.Component<IAppProps, {}> {
+    public render() {
         return (
             <html>
                 <body>
