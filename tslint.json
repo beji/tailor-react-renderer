@@ -4,6 +4,7 @@
     "tslint-react"
   ],
   "rules": {
+    "max-line-length": false,
     "indent": [
       true,
       "spaces"

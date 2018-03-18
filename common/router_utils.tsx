@@ -5,8 +5,9 @@ import * as http from 'http';
 export const Endpoints = {
     routerAddress: ROUTER,
     fragments: {
-        test: `/fragment/test`,
-        category: `/fragment/category`,
+        test: '/fragment/test',
+        category: '/fragment/category',
+        common: '/fragment/common',
     },
 };
 

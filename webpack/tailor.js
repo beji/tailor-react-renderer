@@ -17,6 +17,10 @@ module.exports = [
         // Add the loader for .ts files.
         module: {
             rules: [
+                {
+                    test: /\.css$/,
+                    use: [ 'to-string-loader', 'css-loader' ]
+                },                
                 common.loaders.tslint,                
                 common.loaders.typescript
             ],

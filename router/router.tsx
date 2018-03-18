@@ -13,12 +13,16 @@ interface IEndpointmapping {
 
 const Endpointmappings: IEndpointmapping[] = [
     {
-        from: Endpoints.fragments.category,
-        to: 'http://localhost:3002',
-    },
-    {
         from: Endpoints.fragments.test,
         to: 'http://localhost:3000',
+    },
+    {
+        from: Endpoints.fragments.common,
+        to: 'http://localhost:3001',
+    },
+    {
+        from: Endpoints.fragments.category,
+        to: 'http://localhost:3002',
     },
 ];
 
@@ -32,7 +36,7 @@ const server = http.createServer((req, res) => {
         res.writeHead(200);
         return res.end('Hello');
     }
-    const endpoints = Endpointmappings.filter((mapping) => mapping.from.startsWith(pathname));
+    const endpoints = Endpointmappings.filter((mapping) => pathname.startsWith(mapping.from));
 
     if (endpoints.length !== 1) {
         res.writeHead(404);

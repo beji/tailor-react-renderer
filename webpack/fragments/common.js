@@ -5,11 +5,11 @@ const common = require('../common');
 module.exports = [
     {
         entry: {
-            server: './fragments/category/server.tsx'
+            server: './fragments/common/server.tsx'
         },
         output: {
             path: path.join(__dirname, '../../dist/fragments'),
-            filename: 'category.js'
+            filename: 'common.js'
         },
         resolve: {
             extensions: ['.ts', '.tsx', '.js', '.jsx']
@@ -26,11 +26,11 @@ module.exports = [
     },
     {
         entry: {
-            client: './fragments/category/client.tsx'
+            client: './fragments/common/client.tsx'
         },
         output: {
             path: path.join(__dirname, '../../public/fragments'),
-            filename: 'category.js',
+            filename: 'common.js',
             libraryTarget: 'amd'
         },
         resolve: {
@@ -42,10 +42,6 @@ module.exports = [
                 common.loaders.typescript
             ],
         },
-        target: 'web',
-        externals: {
-            'react': 'react',
-            'react-dom': 'react-dom'
-        }
+        target: 'web'
     }
 ]
