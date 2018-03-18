@@ -34,7 +34,7 @@ const fetchTemplate = (request: any, parseTemplate: any) => {
         <script>
         (function(d) {
             require(d);
-            var arr = [ 'react', 'react-dom', 'classnames' ];
+            var arr = [ 'react', 'react-dom', 'styled-components' ];
             while (i = arr.pop())(function(dep) {
               define(dep, d, function(b) {
                 return b[dep];
@@ -51,6 +51,8 @@ const fetchTemplate = (request: any, parseTemplate: any) => {
     switch (pathName) {
         case '/':
             return parseTemplate(home);
+        case '/favicon.ico':
+            return '';
         default:
             return parseTemplate(home);
     }

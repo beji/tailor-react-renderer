@@ -45,7 +45,8 @@ module.exports = [
         target: 'web',
         externals: {
             'react': 'react',
-            'react-dom': 'react-dom'
+            'react-dom': 'react-dom',
+            'styled-components': 'styled-components'
         }
     }
 ]
