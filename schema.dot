@@ -2,24 +2,16 @@ digraph {
     request [shape="point"];
     tailor [shape="box"];
     router [shape="pentagon"];
-    
-    {rank=same; fragment_1, fragment_n};
-    {rank=same; data_1, data_n};
+    fragment [label="fragment 1..n"]
+    data [label="data 1..n"]
 
     request -> tailor;
     tailor -> router [label="gets route for fragments"];
-    tailor -> fragment_1 [label="renders"];        
-
-    tailor -> fragment_n [label="renders"];
+    tailor -> fragment [label="renders"];        
     
     subgraph component_1 {
-        fragment_1 -> data_1 [label="gets data"];        
-        fragment_1 -> router [label="gets route for data"];
-    }
-
-    subgraph component_n {
-        fragment_n -> data_n [label="gets data"];        
-        fragment_n -> router [label="gets route for data"];             
+        fragment -> data [label="gets data"];        
+        fragment -> router [label="gets route for data"];
     }
 
 }
