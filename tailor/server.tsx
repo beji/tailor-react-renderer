@@ -51,15 +51,19 @@ const fetchTemplate = (request: any, parseTemplate: any) => {
     switch (pathName) {
         case '/':
             return parseTemplate(home);
-        case '/favicon.ico':
-            return '';
         default:
             return parseTemplate(home);
     }
 };
 
 const tailor = new Tailor({fetchTemplate});
-const server = http.createServer(tailor.requestHandler);
+const server = http.createServer((req, res) => {
+    if (req.url === '/favicon.ico') {
+        res.writeHead(200, { 'Content-Type': 'image/x-icon' });
+        return res.end('');
+    }
+    tailor.requestHandler(req, res);
+});
 
 console.log(`Tailor Server started at ${PORT}`);
 server.listen(PORT);
