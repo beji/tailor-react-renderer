@@ -1,17 +1,44 @@
-digraph {    
-    request [shape="point"];
-    tailor [shape="box"];
-    router [shape="pentagon"];
-    fragment [label="fragment 1..n"]
-    data [label="data 1..n"]
+digraph {       
 
-    request -> tailor;
-    tailor -> router [label="gets route for fragments"];
-    tailor -> fragment [label="renders"];        
+    graph [fontname = "arial"];
+    node [fontname = "arial"];
+    edge [fontname = "arial"];
+
+    subgraph cluster_simple {
+        label="Simplified Dataflow"
+		style=filled
+		color=lightgrey
+		node [style=filled,color=white]
+
+        request_simple [shape="point" label="simple overview"]
+        tailor_simple [shape="box" label="tailor"]
+        fragment_simple [label="fragment 1..n"]
+        data_simple [label="data 1..n"]
+
+        request_simple -> tailor_simple
+        tailor_simple -> fragment_simple
+        fragment_simple -> tailor_simple
+        fragment_simple -> data_simple
+        data_simple -> fragment_simple
+    }
+    subgraph cluster_with_router {
+        label="Routed dataflow"
+        request_routed [shape="point"];
+        tailor_routed [shape="box" label="tailor"];
+        router [shape="pentagon", label="router"];
+        fragment_routed [label="fragment 1..n"]
+        data_routed [label="data 1..n"]
+
+        request_routed -> tailor_routed;
+        tailor_routed -> router
+
+        router -> tailor_routed
+        router -> fragment_routed
+        router -> data_routed
     
-    subgraph component_1 {
-        fragment -> data [label="gets data"];        
-        fragment -> router [label="gets route for data"];
+        fragment_routed -> router
+
+        data_routed -> router
     }
 
 }
