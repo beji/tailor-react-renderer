@@ -2,7 +2,7 @@ import * as http from 'http';
 import * as url from 'url';
 import * as fs from 'fs';
 
-import { Endpoints } from '../common/router_utils';
+import { Endpoints } from '#common#/router_utils';
 
 const PORT = 4000;
 

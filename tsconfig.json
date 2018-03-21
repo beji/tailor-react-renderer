@@ -10,7 +10,11 @@
         "strict": true,
         "noFallthroughCasesInSwitch": true,
         "noImplicitReturns": true,
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "baseUrl": ".",
+        "paths": {
+            "#common#/*": ["*", "common/*", "../common/*"]
+        }
     },
     "exclude": [
         "node_modules"

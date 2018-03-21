@@ -1,6 +1,6 @@
 {
   "extends": [
-    "tslint:latest",
+    "tslint:recommended",
     "tslint-react"
   ],
   "rules": {
@@ -28,7 +28,7 @@
       false
     ],
     "no-submodule-imports": [
-      true,
+      false,
       "react-dom/server"
     ]
   }

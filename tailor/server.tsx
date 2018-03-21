@@ -6,7 +6,7 @@ import * as url from 'url';
 import App from './App';
 import * as ReactDOMServer from 'react-dom/server';
 import { createFactory } from 'react';
-import { Endpoints, getRouterUrl } from '../common/router_utils';
+import { Endpoints, getRouterUrl } from '#common#/router_utils';
 import { ServerStyleSheet } from 'styled-components';
 import normalize from './normalize';
 
